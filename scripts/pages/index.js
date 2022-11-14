@@ -4,31 +4,36 @@
             const response = await fetch('./data/photographers.json');
             const photographers = await response.json();
             const onlyPhotographers = photographers.photographers;
-            console.log(onlyPhotographers);
             return onlyPhotographers;
         } catch (error) {
             console.error(`An error occured : ${error}`);
+            const errorElement = document.createElement('h2');
+            errorElement.classList.add('photographers_error');
+            errorElement.textContent = 'Erreur lors de la récupération des données des photographes.';
+            errorElement.style.textAlign = 'center';
+            main.appendChild(errorElement);
+            return { photographers: [] };
+            //Afficher une erreur sur la page en cas d'une erreur
         }
-        
-        // return ({
-        //     photographers: [...onlyPhotographers]
-        // });
     }
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
-
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
+        try{
+            photographers.forEach((photographer) => {
+                const photographerModel = photographerFactory(photographer);
+                const userCardDOM = photographerModel.getUserCardDOM();
+                photographersSection.appendChild(userCardDOM);
+            });
+        }
+        catch(error){
+            console.error(`An error occured : ${error}`);
+        }
+    }
 
     async function init() {
         // Récupère les datas des photographes
         const photographers = await getPhotographers();
-        console.log(photographers);
         displayData(photographers);
     }
     
