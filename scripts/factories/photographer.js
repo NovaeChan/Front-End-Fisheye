@@ -40,11 +40,12 @@ function photographerFactory(data) {
 
         article.appendChild(link);
         article.appendChild(h2);
+
         blockDescription.appendChild(locations);
         blockDescription.appendChild(tag);
         blockDescription.appendChild(cost);
-
         article.appendChild(blockDescription);
+        
         return (article);
     }
     return { getUserCardDOM };

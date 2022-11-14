@@ -6,6 +6,61 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+    font-weight: 400;
+}
+
+.photograph-header img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.photograph-header h1{
+    font-size: 64px;
+    color: #D3573C;
+    margin-right: 0px;
+}
+
+.photograph-header h3{
+    color : #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.photograph-header p{
+    font-size: 18px;
+}
+
+.photograph-media{
+    margin-top: 100px;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+    font-weight: 400;
+}
+
+.photograph-media img{
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.photograph-media div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.photograph-media .title-img{
+    color: #901C1C;;
+    font-size: 24px;
 }
 
 .contact_button {
