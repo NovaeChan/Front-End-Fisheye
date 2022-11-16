@@ -48,6 +48,52 @@ function photographerFactory(data) {
         
         return (article);
     }
-    return { getUserCardDOM };
+
+    //Rename method + create new method for profile pic
+    function photographerProfile(){
+        const button = document.querySelector('.contact_button');
+
+        const header = document.querySelector(".photograph-header");
+        
+        const titleName = document.createElement( 'h1' );
+        titleName.textContent = name;
+
+        const description = document.createElement( 'div' );
+        description.className = 'description';
+        description.className = 'photographer_description';
+
+        const location = document.createElement( 'h3' );
+        location.textContent = `${city}, ${country}`;
+
+        const tag = document.createElement( 'p' );
+        tag.textContent = `${tagline}`;
+
+        description.appendChild(location);
+        description.appendChild(tag);
+
+        const info = document.createElement( 'section' );
+        info.appendChild(titleName);
+        info.appendChild(description);
+
+        const portrait = document.createElement( 'img' );
+        portrait.setAttribute("src", picture);
+        portrait.alt = `Photo de profil de ${name}`;
+
+        header.insertBefore(info, button);
+        header.insertBefore(portrait, button);
+
+        const locations = document.createElement( 'h3' );
+        locations.textContent = `${city}, ${country}`;
+        locations.classList.add('country');
+        locations.ariaLabel = `${city}, ${country}`;
+
+        return (header);
+    }
+
+    function getUserPortrait(){
+
+    }
+
+    return { getUserCardDOM, photographerProfile, getUserPortrait };
 }
 

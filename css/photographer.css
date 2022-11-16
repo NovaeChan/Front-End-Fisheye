@@ -47,7 +47,7 @@
     font-weight: 400;
 }
 
-.photograph-media img{
+.photograph-media img, .photograph-media video{
     width: 350px;
     height: 300px;
     object-fit: cover;
@@ -61,6 +61,15 @@
 .photograph-media .title-img{
     color: #901C1C;;
     font-size: 24px;
+}
+
+.photograph-media .image-info{
+    display: flex;
+    align-items: center;
+}
+
+.photograph-media .fa-heart{
+    color: #901C1C;
 }
 
 .contact_button {

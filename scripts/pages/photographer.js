@@ -8,10 +8,7 @@ async function getInfos() {
         //Request to json file
         const response = await fetch('./data/photographers.json');
         const data = await response.json();
-        let photographer = data.photographers.find(photographer => photographer.id == photographerId);
-        //find all media with the same photographer's id
-        let medias = data.media.filter(media => media.photographerId == photographerId);
-        displayPhotographer(photographer, medias);
+        return data;
     }
     catch (error) {
 		console.error(error);
@@ -22,7 +19,9 @@ async function getInfos() {
 		main.appendChild(errorElement);
 	}
 }
-
+//TODO : Mettre les infos avant le bouton et le profil après. Voir le tab index pour la tabulation sur la page d'accueil et 
+//les photos d'une personne
+//Gérer les évènements avec les flèches de clavier
 async function displayPhotographer(photographer, medias){
     const photographersSection = document.querySelector(".photograph-header");
     const mediaSection = document.createElement( 'section' );
@@ -30,8 +29,10 @@ async function displayPhotographer(photographer, medias){
     main.appendChild(mediaSection);
     try{
         //Description photographer
-        const photographerModel = photographerDisplay(photographer);
-        photographerModel.getUserHeader();
+        const photographerModel = photographerFactory(photographer);
+        photographerModel.photographerProfile();
+        // photographersSection.appendChild(userInfos);
+
 
         //Medias 
         const mediasBlock = document.createElement( 'section' );
@@ -47,49 +48,13 @@ async function displayPhotographer(photographer, medias){
     }
 }
 
-function photographerDisplay(data){
-    const { name, portrait, city, country, tagline, price } = data;
-    const picture = `assets/photographers/${portrait}`;
-    const button = document.querySelector('.contact_button');
-
-    function getUserHeader(){
-        const header = document.querySelector(".photograph-header");
-        
-        const titleName = document.createElement( 'h1' );
-        titleName.textContent = name;
-
-        const description = document.createElement( 'div' );
-        description.className = 'description';
-        description.className = 'photographer_description';
-
-        const location = document.createElement( 'h3' );
-        location.textContent = `${city}, ${country}`;
-
-        const tag = document.createElement( 'p' );
-        tag.textContent = `${tagline}`;
-
-        description.appendChild(location);
-        description.appendChild(tag);
-
-        const info = document.createElement( 'section' );
-        info.appendChild(titleName);
-        info.appendChild(description);
-
-        const portrait = document.createElement( 'img' );
-        portrait.setAttribute("src", picture);
-        portrait.alt = `Photo de profil de ${name}`;
-
-        header.insertBefore(info, button);
-        header.insertBefore(portrait, button);
-
-        const locations = document.createElement( 'h3' );
-        locations.textContent = `${city}, ${country}`;
-        locations.classList.add('country');
-        locations.ariaLabel = `${city}, ${country}`;
-
-        return (header);
-    }
-    return {getUserHeader};
+async function init() {
+    // Récupère les datas des photographes
+    const { photographers, media } = await getInfos();
+    let photograph = photographers.find(photographer => photographer.id == photographerId);
+    let medias = media.filter(media => media.photographerId == photographerId);
+    console.log(medias);
+    displayPhotographer(photograph, medias);
 }
 
-getInfos();
+init();
