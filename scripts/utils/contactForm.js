@@ -3,7 +3,7 @@ const main = document.querySelector('main');
 const contactModal = document.getElementById("contact_modal");
 const modal = document.querySelector('.modal');
 
-//Faire un tabindex
+//Faire un tabindex + sur échap ajouter la fermeture de la modal
 buttons.forEach(button => {
     button.addEventListener("click", () => {
         contactModal.style.display = "block";
