@@ -1,41 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
-  </head>
-  <body>
-    <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye homepage"/></a>
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
-    </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
-        </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/factories/media.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
-  </body>
+<html lang="fr">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye homepage" /></a>
+  </header>
+  <main id="main" aria-hidden="false">
+    <div class="photograph-header">
+      <button class="contact_button">Contactez-moi</button>
+    </div>
+  </main>
+  <div id="contact_modal" role="form" aria-hidden="true" aria-describedby="modalContact">
+    <div class="modal">
+      <header>
+        <h2 id="contact-me">Contactez-moi</h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close contact form"/>
+      </header>
+      <form>
+        <div>
+          <label for="firstName" id="firstNameLabel">Prénom</label>
+          <input type="text" name="firstName" id="firstName" role="textbox" aria-label="First name"
+            aria-labelledby="firstNameLabel" required />
+          <label for="lastName" id="lastNameLabel">Nom</label>
+          <input type="text" name="lastName" id="lastName" role="textbox" aria-label="Last name"
+            aria-labelledby="lastNameLabel" required />
+          <label for="email" id="emailLabel">Email</label>
+          <input type="email" name="email" id="email" role="textbox" aria-label="email" aria-labelledby="emailLabel"
+            required />
+          <label for="yourMessage" id="yourMessageLabel">Votre message</label>
+          <textarea name="yourMessage" id="yourMessage" rows="10" role="textbox" aria-label="Your message"
+            aria-labelledby="yourMessageLabel" required></textarea>
+        </div>
+        <button class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <script src="scripts/factories/photographer.js"></script>
+  <script src="scripts/factories/media.js"></script>
+  <script src="/scripts/pages/photographer.js"></script>
+  <script src="/scripts/utils/contactForm.js"></script>
+</body>
+
 </html>

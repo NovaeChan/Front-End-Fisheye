@@ -19,21 +19,33 @@ async function getInfos() {
 		main.appendChild(errorElement);
 	}
 }
-//TODO : Mettre les infos avant le bouton et le profil après. Voir le tab index pour la tabulation sur la page d'accueil et 
-//les photos d'une personne
-//Gérer les évènements avec les flèches de clavier
+//TODO : Gérer les évènements avec les flèches de clavier
 async function displayPhotographer(photographer, medias){
     const photographersSection = document.querySelector(".photograph-header");
+    const button = document.querySelector(".contact_button");
     const mediaSection = document.createElement( 'section' );
+    const likesAndPrices = document.createElement( 'section' );
+    const modalTitle = document.querySelector('#contact-me');
+
     mediaSection.className = 'photograph-media';
+    likesAndPrices.className = 'likesAndPrice';
+    button.ariaLabel = `Contact me : ${photographer.name}`;
+    modalTitle.innerHTML += ` <br>${photographer.name}`;
+
     main.appendChild(mediaSection);
+    main.appendChild(likesAndPrices);
+    // main.insertBefore(picture, button);
     try{
         //Description photographer
         const photographerModel = photographerFactory(photographer);
-        photographerModel.photographerProfile();
-        // photographersSection.appendChild(userInfos);
+        const photographDesc = photographerModel.getUserDescription();
+        const photographImg = photographerModel.getUserPortrait();
+        const photographLikesAndPrice = photographerModel.getUserLikesAndPrices(getLikes(medias));
 
-
+        photographersSection.insertBefore(photographDesc, button);
+        photographersSection.appendChild(photographImg);
+        likesAndPrices.appendChild(photographLikesAndPrice);
+        
         //Medias 
         const mediasBlock = document.createElement( 'section' );
         mediasBlock.className = 'medias';
@@ -42,10 +54,19 @@ async function displayPhotographer(photographer, medias){
             const userMedias = mediaModel.getUserMedia();
             mediaSection.appendChild(userMedias);
         });
+        
     }
     catch(error){
         console.error(`An error occured : ${error}`);
     }
+}
+
+function getLikes(medias){
+    let likes = 0;
+    medias.forEach(media => {
+        likes += media.likes
+    });
+    return likes;
 }
 
 async function init() {
@@ -53,7 +74,6 @@ async function init() {
     const { photographers, media } = await getInfos();
     let photograph = photographers.find(photographer => photographer.id == photographerId);
     let medias = media.filter(media => media.photographerId == photographerId);
-    console.log(medias);
     displayPhotographer(photograph, medias);
 }
 

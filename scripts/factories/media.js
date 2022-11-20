@@ -1,35 +1,37 @@
-function mediaFactory(data, photographer) {
+function mediaFactory(data, photoBlockgrapher) {
     const { date, id, image, likes, price, title, video } = data;
-    const pathMedia = `assets/images/${photographer.name}/`;
+    const pathMedia = `assets/images/${photoBlockgrapher.name}/`;
 
     function getUserMedia(){
         const article = document.createElement( 'article' );
-
         const link = document.createElement( 'a' );
-        link.href= `#`;
-        link.ariaLabel = 'Lorem ipsum dolor sit amet.';
+        const photoBlock = document.createElement( 'div' );
         const media = image ? document.createElement( 'img' ) : document.createElement( 'video' );
-        media.setAttribute("src", pathMedia + (image ? image : video));
-        console.log(media);
-        link.appendChild(media);
-
-        const imageInfo = document.createElement( 'div' );
-        imageInfo.className = "image-info";
-
         const titleImg = document.createElement( 'p' );
+        const like = document.createElement( 'p' );
+
+        link.href= `#`;
+        link.ariaLabel = `${title}`;
+        media.setAttribute("src", pathMedia + (image ? image : video));
+        media.alt = `${title}`;
+
+        photoBlock.className = "image-info";
+        photoBlock.alt = `${title}`;
+
         titleImg.textContent = `${title}`;
         titleImg.ariaLabel = `${title}`;
         titleImg.className = 'title-img';
 
-        const like = document.createElement( 'p' );
-        like.innerHTML = `${likes} <i class="fa-solid fa-heart"></i>`;
+        like.innerHTML = `${likes} <i class="fa-solid fa-heart" aria-label=${likes}></i>`;
         like.className = 'likes ';
 
-        imageInfo.appendChild(titleImg);
-        imageInfo.appendChild(like);
+        link.appendChild(media);
+
+        photoBlock.appendChild(titleImg);
+        photoBlock.appendChild(like);
 
         article.appendChild(link);
-        article.appendChild(imageInfo);
+        article.appendChild(photoBlock);
 
         return (article);
     }

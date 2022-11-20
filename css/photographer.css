@@ -6,12 +6,14 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
-    justify-items: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     font-weight: 400;
+}
+
+.photograph-header section, .photograph-header img{
+    margin: 0 40px;
 }
 
 .photograph-header img{
@@ -61,15 +63,44 @@
 .photograph-media .title-img{
     color: #901C1C;;
     font-size: 24px;
+    max-width: 300px;
+    text-overflow: ellipsis;
 }
 
 .photograph-media .image-info{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .photograph-media .fa-heart{
     color: #901C1C;
+}
+
+.photograph-media article{
+    max-width: 350px;
+}
+
+.likesAndPrice{
+    position: fixed;
+    right: 20px;
+    bottom: -10px;
+    background: #DB8876;
+    border-radius: 5px;
+    height: 89px;
+    width: 376px;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+.likesAndPrice-article {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 20px;
 }
 
 .contact_button {
@@ -95,11 +126,16 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    position: absolute;
+    top: 15%;
+    left: 25%;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: auto;
+    align-items: flex-start
 }
 
 .modal header img {
@@ -109,7 +145,7 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    /* text-align: center; */
 }
 
 form {
@@ -137,4 +173,16 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+form textarea {
+    width: 100%;
+    /* height: 68px; */
+    border: none;
+    border-radius: 5px;
+    resize: none;
+}
+
+.no-scroll {
+    overflow: hidden;
 }

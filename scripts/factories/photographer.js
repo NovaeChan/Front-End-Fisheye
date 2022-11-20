@@ -3,43 +3,49 @@ function photographerFactory(data) {
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
+        //On crée les elements
         const article = document.createElement( 'article' );
-
-        //Image link
         const link = document.createElement( 'a' );
+        const img = document.createElement( 'img' );
+        const h2 = document.createElement( 'h2' );
+        const blockNamePhotograh = document.createElement( 'div' );
+        const blockDescription = document.createElement( 'div' );
+        const locations = document.createElement( 'h3' );
+        const tag = document.createElement( 'p' );
+        const cost = document.createElement( 'p' );
+
+
+        //Lien image + photographe
         link.href = `photographer.html?id=${id}`;
         link.ariaLabel = `Lien vers le photographe ${name}`;
-        const img = document.createElement( 'img' );
+
         img.setAttribute("src", picture);
         img.alt = `Photo de profil de ${name}`;
-        link.appendChild(img);
-
-        //Photographer's name
-        const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         h2.ariaLabel = `${name}`;
 
-        //Description block
-        const blockDescription = document.createElement( 'div' );
+        link.appendChild(img);
+        link.appendChild(h2);
+        link.tabIndex = 1;
 
-        const locations = document.createElement( 'h3' );
+        blockNamePhotograh.appendChild(link);
+
+        //Description block
+
         locations.textContent = `${city}, ${country}`;
         locations.classList.add('country');
         locations.ariaLabel = `${city}, ${country}`;
 
-        const tag = document.createElement( 'p' );
         tag.classList.add('tagline');
         tag.textContent = `${tagline}`;
         tag.ariaLabel = `${tagline}`;
 
-        const cost = document.createElement( 'p' );
         cost.classList.add('pricing');
         cost.classList.add('price');
         cost.textContent = `${price}€/jour`;
         cost.ariaLabel = `${price}€/jour`;
 
-        article.appendChild(link);
-        article.appendChild(h2);
+        article.appendChild(blockNamePhotograh);
 
         blockDescription.appendChild(locations);
         blockDescription.appendChild(tag);
@@ -50,13 +56,12 @@ function photographerFactory(data) {
     }
 
     //Rename method + create new method for profile pic
-    function photographerProfile(){
-        const button = document.querySelector('.contact_button');
-
-        const header = document.querySelector(".photograph-header");
+    function getUserDescription(){
+        const photographerDescription = document.createElement( 'section' );
         
         const titleName = document.createElement( 'h1' );
         titleName.textContent = name;
+        titleName.ariaLabel = `Nom du photographe : ${name}`;
 
         const description = document.createElement( 'div' );
         description.className = 'description';
@@ -75,25 +80,38 @@ function photographerFactory(data) {
         info.appendChild(titleName);
         info.appendChild(description);
 
+
+        photographerDescription.appendChild(titleName);
+        photographerDescription.appendChild(description);
+        return (photographerDescription);
+    }
+
+    function getUserPortrait(){
         const portrait = document.createElement( 'img' );
         portrait.setAttribute("src", picture);
         portrait.alt = `Photo de profil de ${name}`;
 
-        header.insertBefore(info, button);
-        header.insertBefore(portrait, button);
-
-        const locations = document.createElement( 'h3' );
-        locations.textContent = `${city}, ${country}`;
-        locations.classList.add('country');
-        locations.ariaLabel = `${city}, ${country}`;
-
-        return (header);
+        return (portrait);
     }
 
-    function getUserPortrait(){
+    function getUserLikesAndPrices(likes){
+        const PricesLikes = document.createElement( 'article' );
+        PricesLikes.className = 'likesAndPrice-article';
 
+        const likesP = document.createElement( 'p' ); 
+        likesP.innerHTML = `${likes} <i class="fa-solid fa-heart" aria-label='nombre de likes : ${likes}'></i>`;
+        likes.ariaLabel = ``;
+
+        const priceP = document.createElement( 'p' );
+        priceP.textContent = `${price}€/jour`;
+        priceP.ariaLabel = `${price}€/jour`;
+
+        PricesLikes.appendChild(likesP);
+        PricesLikes.appendChild(priceP);
+
+        return (PricesLikes);
     }
 
-    return { getUserCardDOM, photographerProfile, getUserPortrait };
+    return { getUserCardDOM, getUserDescription, getUserPortrait, getUserLikesAndPrices };
 }
 
