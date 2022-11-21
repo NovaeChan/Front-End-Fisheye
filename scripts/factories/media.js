@@ -14,6 +14,7 @@ function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
         media.className = "thumbnail";
         media.setAttribute("onclick", "openLightbox(event)");
         media.dataset.index = dataSetIndex;
+        media.setAttribute('loading', 'lazy');
 
         figureCaption.className = "image-info";
         figureCaption.alt = `${title}`;
