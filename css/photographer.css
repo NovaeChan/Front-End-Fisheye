@@ -57,12 +57,17 @@
     flex-direction: column;
 }
 
+.photograph-media a{
+    margin-bottom: 10px;
+    width: 100%;
+    height: 300px;
+}
+
 .photograph-media img, 
 .photograph-media video{
     object-fit: cover;
     width: 100%;
     height: 300px;
-    margin-bottom: 10px;
     cursor: pointer;
 }
 

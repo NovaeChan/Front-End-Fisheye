@@ -21,7 +21,7 @@ button.addEventListener("click", () => {
                 break;
         }
     });
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener("keypress", (event) => {
         if(event.key === 'Escape'){
             closeModal();
         }
