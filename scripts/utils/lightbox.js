@@ -5,6 +5,7 @@ function openLightbox(event){
 
 function closeLightbox(){
     document.getElementById("lightbox_modal").style.display = "none";
+    removeLightbox();
 }
 
 let thumbnailIndex = 1;
@@ -18,4 +19,12 @@ function showLightbox(event){
 
     lightboxThumbnail.appendChild(target.cloneNode());
     lightboxThumbnail.appendChild(description.cloneNode(true));
+}
+
+function removeLightbox(){
+    const lightbox = document.getElementById('lightbox_modal');
+    const thumbnail = lightbox.querySelector(".thumbnail");
+    const description = lightbox.querySelector('.figure-description');
+    thumbnail.remove();
+    description.remove();
 }
