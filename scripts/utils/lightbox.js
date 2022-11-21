@@ -1,4 +1,3 @@
-let dataIndex = 0;
 const nextButton = document.querySelector('[aria-label="Next image"]');
 const previousButton = document.querySelector('[aria-label="Previous image"]');
 
@@ -25,7 +24,6 @@ function showLightbox(target){
     const description = figureCaption.querySelector(".figure-description");
     const lightboxThumbnail = document.querySelector(".lightbox-thumbnail");
 
-    dataIndex = target.dataset.index;
     lightboxThumbnail.appendChild(target.cloneNode());
     lightboxThumbnail.appendChild(description.cloneNode(true));
 
