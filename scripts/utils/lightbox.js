@@ -3,6 +3,7 @@ const previousButton = document.querySelector('[aria-label="Previous image"]');
 const lightbox = document.getElementById('lightbox_modal');
 const closeButtonLightbox = document.getElementById('close_button');
 const header = document.querySelector('header');
+const mainPhotographer = document.querySelector('main');
 let lightboxOpened = false;
 
 nextButton.addEventListener("click", (event) => {
@@ -45,13 +46,14 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+// eslint-disable-next-line no-unused-vars
 function openLightbox(event){
     lightbox.style.display = "block";
-    main.setAttribute('aria-hidden', 'true');
-    main.className = 'no-scroll';
+    mainPhotographer.setAttribute('aria-hidden', 'true');
+    mainPhotographer.className = 'no-scroll';
     header.className = 'no-scroll';
     header.style.display ='none';
-    main.style.display = 'none';
+    mainPhotographer.style.display = 'none';
     header.setAttribute('aria-hidden', 'true');
     lightbox.setAttribute('aria-hidden', 'false');
     showLightbox(event.target);
@@ -62,9 +64,9 @@ function openLightbox(event){
 function closeLightbox(){
     document.getElementById("lightbox_modal").style.display = "none";
     lightbox.style.display = "none";
-    main.setAttribute('aria-hidden', 'false');
-    main.className = 'scroll';
-    main.style.display = 'block';
+    mainPhotographer.setAttribute('aria-hidden', 'false');
+    mainPhotographer.className = 'scroll';
+    mainPhotographer.style.display = 'block';
     header.style.display = 'flex';
     lightbox.setAttribute('aria-hidden', 'true');
     lightboxOpened = false;
