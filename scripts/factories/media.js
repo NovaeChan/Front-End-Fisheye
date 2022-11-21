@@ -1,4 +1,4 @@
-function mediaFactory(data, figureCaptiongrapher) {
+function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
     const { date, id, image, likes, price, title, video } = data;
     const pathMedia = `assets/images/${figureCaptiongrapher.name}/`;
 
@@ -11,13 +11,16 @@ function mediaFactory(data, figureCaptiongrapher) {
 
         media.setAttribute("src", pathMedia + (image ? image : video));
         media.alt = `${title}`;
+        media.className = "thumbnail";
+        media.setAttribute("onclick", "openLightbox(event)");
+        media.dataset.index = dataSetIndex;
 
         figureCaption.className = "image-info";
         figureCaption.alt = `${title}`;
 
         imageTitle.textContent = `${title}`;
         imageTitle.ariaLabel = `${title}`;
-        imageTitle.className = 'title-img';
+        imageTitle.className = 'figure-description';
 
         like.innerHTML = `${likes} <i class="fa-solid fa-heart" aria-label=${likes}></i>`;
         like.className = 'likes ';

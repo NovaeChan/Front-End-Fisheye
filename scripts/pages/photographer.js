@@ -54,11 +54,12 @@ function displayPhothographerMedias(medias, photograph) {
     main.appendChild(mediasBlock);
 
     try {
-        // mediasBlock.className = 'medias';
+        let dataSetIndex = 0;
         medias.forEach((media) => {
-            const mediaModel = mediaFactory(media, photograph);
+            const mediaModel = mediaFactory(media, photograph, dataSetIndex);
             const userMedias = mediaModel.getUserMedia();
             mediasBlock.appendChild(userMedias);
+            dataSetIndex++;
         });
     } catch (error) {
         console.error(`An error occured : ${error}`);
@@ -73,6 +74,10 @@ function getLikes(medias) {
     return likes;
 }
 
+// function displayLightbox(event){
+//     console.log(event.target);
+// }
+
 async function init() {
     // Récupère les datas des photographes
     const { photographers, media } = await getInfos();
@@ -80,6 +85,13 @@ async function init() {
     let medias = media.filter(media => media.photographerId == photographerId);
     displayPhotographerInfos(photograph, medias);
     displayPhothographerMedias(medias, photograph);
+    // const thumbnails = document.querySelectorAll('.thumbnail');
+    // thumbnails.forEach(thumbnail =>{
+    //     thumbnail.addEventListener("click", displayLightbox, false);
+    // })
+
 }
+
+
 
 init();

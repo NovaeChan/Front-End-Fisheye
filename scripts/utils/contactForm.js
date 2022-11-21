@@ -21,10 +21,10 @@ button.addEventListener("click", () => {
                 break;
         }
     });
-    contactModal.addEventListener('keydown', (event) => {
-        if(event.key == 'Escape'){
+    document.addEventListener('keydown', (event) => {
+        if(event.key === 'Escape'){
             closeModal();
-        } 
+        }
     })
 });
 

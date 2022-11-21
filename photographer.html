@@ -45,10 +45,22 @@
       </form>
     </div>
   </div>
+  <div role="dialog" id="lightbox_modal" class="lightbox_modal">
+    <div class="lightbox">
+      <nav>
+        <i class="fa-sharp fa-solid fa-angle-left" aria-label="Previous image" role="link"></i>
+        <i class="fa-sharp fa-solid fa-angle-right" aria-label="Next Image" role="link"></i>
+      </nav>
+      <div class="lightbox-thumbnail">
+      </div>
+      <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="Close dialog" role="button" tabindex="0" class="close_button"/>  
+    </div>
+  </div>
   <script src="scripts/factories/photographer.js"></script>
   <script src="scripts/factories/media.js"></script>
   <script src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
+  <script src="/scripts/utils/lightbox.js"></script>
 </body>
 
 </html>
