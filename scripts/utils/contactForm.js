@@ -1,15 +1,31 @@
 const button = document.querySelector(".contact_button");
 const contactModal = document.getElementById("contact_modal");
 const modal = document.querySelector('.modal');
+const closeButton = modal.querySelector('img');
 const form = document.querySelector('form');
+const mainWrapper = document.querySelector('main');
 
-//Faire un tabindex + sur échap ajouter la fermeture de la modal
 button.addEventListener("click", () => {
     contactModal.style.display = "block";
-    main.setAttribute('aria-hidden', 'true');
-    main.className = 'no-scroll';
+    mainWrapper.setAttribute('aria-hidden', 'true');
+    mainWrapper.className = 'no-scroll';
     contactModal.setAttribute('aria-hidden', 'false');
-    modal.querySelector('img').focus();
+    closeButton.focus();
+    closeButton.addEventListener('keydown', (event) => {
+        switch(event.key){
+            case "Escape":
+            case "Enter":
+                closeModal();
+                break;
+            default :
+                break;
+        }
+    });
+    contactModal.addEventListener('keydown', (event) => {
+        if(event.key == 'Escape'){
+            closeModal();
+        } 
+    })
 });
 
 form.addEventListener('submit', (event) => {
@@ -19,7 +35,11 @@ form.addEventListener('submit', (event) => {
 
 function closeModal() {
     contactModal.style.display = "none";
-    main.style.filter = 'none';
+    mainWrapper.style.filter = 'none';
+    mainWrapper.setAttribute('aria-hidden', 'false');
+    mainWrapper.className = 'scroll';
+    contactModal.setAttribute('aria-hidden', 'true');
+    button.focus();
 }
 
 function getFormInput(){

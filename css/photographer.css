@@ -56,10 +56,12 @@
     flex-direction: column;
 }
 
-.photograph-media img, .photograph-media video{
+.photograph-media img, 
+.photograph-media video{
     object-fit: cover;
     width: 100%;
     height: 300px;
+    margin-bottom: 10px;
 }
 
 .photograph-media .title-img{
