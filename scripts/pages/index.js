@@ -11,6 +11,7 @@
             errorElement.classList.add('photographers_error');
             errorElement.textContent = 'Erreur lors de la récupération des données des photographes.';
             errorElement.style.textAlign = 'center';
+            const main = document.querySelector('main');
             main.appendChild(errorElement);
             return { photographers: [] };
             //Afficher une erreur sur la page en cas d'une erreur

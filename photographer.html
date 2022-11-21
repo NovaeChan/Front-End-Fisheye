@@ -24,7 +24,7 @@
     <div class="modal">
       <header>
         <h2 id="contact-me">Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close contact form"/>
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close contact form" role="button" tabindex="0"/>
       </header>
       <form>
         <div>
@@ -38,7 +38,7 @@
           <input type="email" name="email" id="email" role="textbox" aria-label="email" aria-labelledby="emailLabel"
             required />
           <label for="yourMessage" id="yourMessageLabel">Votre message</label>
-          <textarea name="yourMessage" id="yourMessage" rows="10" role="textbox" aria-label="Your message"
+          <textarea name="yourMessage" id="yourMessage" rows="8" role="textbox" aria-label="Your message"
             aria-labelledby="yourMessageLabel" required></textarea>
         </div>
         <button class="contact_button" id="submit_button">Envoyer</button>

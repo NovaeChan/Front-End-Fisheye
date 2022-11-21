@@ -47,7 +47,7 @@ async function displayPhotographerInfos(photographer, medias) {
 }
 
 function displayPhothographerMedias(medias, photograph) {
-    const mediaHeader = document.createElement('section');
+    // const mediaHeader = document.createElement('section');
     const mediasBlock = document.createElement('section');
 
     mediasBlock.className = 'photograph-media';
