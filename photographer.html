@@ -13,18 +13,30 @@
 
 <body>
   <header>
-    <a href="index.html" tabindex="0" ><img src="assets/images/logo.png" class="logo" alt="Fisheye homepage"/></a>
+    <a href="index.html" tabindex="0"><img src="assets/images/logo.png" class="logo" alt="Fisheye homepage" /></a>
   </header>
   <main id="main" aria-hidden="false">
     <div class="photograph-header">
       <button class="contact_button">Contactez-moi</button>
+    </div>
+    <div class="filter">
+      <span class="filter-title">Trier par</span>
+      <div class="wrapper-dropdown">
+        <button onclick="openDropdown(event)" role="listbox" tabindex="0">Popularité</button>
+        <i class="fa-sharp fa-solid fa-chevron-down"></i>
+        <ul class="dropdown">
+          <li onclick="dropdownMeny(event)" class="dropdown-hide">Popularité</li>
+          <li onclick="dropdownMenu(event)">Date</li>
+          <li onclick="dropdownMenu(event)">Titre</li>
+        </ul>
+      </div>
     </div>
   </main>
   <div class="contact_modal" id="contact_modal" role="form" aria-hidden="true" aria-describedby="modalContact">
     <div class="modal">
       <header>
         <h2 id="contact-me">Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close contact form" role="button" tabindex="0"/>
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close contact form" role="button" tabindex="0" />
       </header>
       <form>
         <div>
@@ -53,7 +65,8 @@
       </nav>
       <div class="lightbox-thumbnail">
       </div>
-      <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="Close dialog" role="button" tabindex="0" class="close_button" id="close_button"/>  
+      <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="Close dialog" role="button" tabindex="0"
+        class="close_button" id="close_button" />
     </div>
   </div>
   <script src="scripts/factories/photographer.js"></script>

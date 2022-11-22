@@ -115,4 +115,29 @@ function isEnterPressed(event){
     }
 }
 
+function openDropdown(event){
+    const parent = event.target.parentNode;
+    parent.classList.toggle('wrapper-dropdown-open');
+    event.target.focus();
+}
+
+function dropdownMenu(event){
+    const orderOption = event.target.textContent;
+    const ulDropdown = event.target.parentNode;
+    const fullDropdown = ulDropdown.parentNode;
+    const button =  fullDropdown.querySelector('button');
+    
+    
+    // Récupérer la cible de l'event => stocker la valeur => faire disparaître la li de la cible => la faire apparaître dans le bouton
+    // Avec la valeur stockée appeler une fonction de tri
+    // Ne pas oublier de refermer le dropdown + focus 
+    // 
+}
+
+function orderMedias(orderOption){
+    //Switch case avec les 3 types d'options => A l'intérieur des switchs on appele la méthode sort où l'on tri tous les figures
+    // On ajoute toutes les figures dans le block photograph-media
+}
+
+
 init();

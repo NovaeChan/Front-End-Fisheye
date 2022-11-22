@@ -12,6 +12,7 @@
     align-items: center;
     font-weight: 400;
     padding: 0px 50px;
+    border-radius: 5px;
 }
 
 .photograph-header section, .photograph-header img{
@@ -70,6 +71,7 @@
     width: 100%;
     height: 300px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .photograph-media .figure-description{
@@ -300,4 +302,77 @@ form textarea {
 .lightbox .fa-angle-right{
     font-size: 50px;
     cursor: pointer;
+}
+
+/* Dropdown */
+
+.filter{
+    width: 100%;
+    margin: 30px 100px;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    gap: 30px;
+    justify-items: center;
+    align-items: center;
+}
+
+.wrapper-dropdown{
+    position: relative;
+    color: #FFFFFF;
+    background-color: #901C1C;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    width: 170px;
+    height: 69px;
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.wrapper-dropdown button{
+    color: #FFFFFF;
+    font-size: 18px;
+    border: none;
+    background-color: #901C1C;
+    cursor: pointer;
+}
+
+.wrapper-dropdown .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #901C1C;
+    opacity: 0;
+    border-radius: 0 0 5px 5px;
+    list-style-type: none;
+    padding-left: 10px;
+    
+}
+
+.wrapper-dropdown li{
+    padding: 10px 10px 10px 0px;
+    border-top: #FFFFFF 1px solid;
+    width: 150px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+}
+
+.wrapper-dropdown .dropdown-hide{
+    display: none;
+}
+
+.wrapper-dropdown-open{
+    border-radius: 5px 5px 0px 0px;
+}
+
+.wrapper-dropdown-open .dropdown{
+    opacity: 1;
 }
