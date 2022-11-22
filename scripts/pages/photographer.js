@@ -31,6 +31,7 @@ async function displayPhotographerInfos(photographer, medias) {
 
     try {
         //Description photographer
+        // eslint-disable-next-line no-undef
         const photographerModel = photographerFactory(photographer);
         const photographDesc = photographerModel.getUserDescription();
         const photographImg = photographerModel.getUserPortrait();
@@ -56,6 +57,7 @@ function displayPhothographerMedias(medias, photograph) {
     try {
         let dataSetIndex = 0;
         medias.forEach((media) => {
+            // eslint-disable-next-line no-undef
             const mediaModel = mediaFactory(media, photograph, dataSetIndex);
             const userMedias = mediaModel.getUserMedia();
             mediasBlock.appendChild(userMedias);
@@ -107,5 +109,10 @@ function updateTotalLikes(){
     totalLikes.innerHTML = parseInt(totalLikes.innerHTML) + 1;
 }
 
+function isEnterPressed(event){
+    if(event.key == 'Enter'){
+        openLightbox(event);
+    }
+}
 
 init();

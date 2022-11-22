@@ -13,9 +13,11 @@ function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
         media.alt = `${title}`;
         media.className = "thumbnail";
         media.setAttribute("onclick", "openLightbox(event)");
+        media.setAttribute("onkeypress", "isEnterPressed(event)");
         media.dataset.index = dataSetIndex;
         media.setAttribute('loading', 'lazy');
         media.tabIndex = "0";
+        //Ajouter un écouteur pour le keypress pour ouvrir la lightbox
 
 
         figureCaption.className = "image-info";
@@ -29,11 +31,10 @@ function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
         like.className = 'likes ';
         like.setAttribute("onclick", "addLike(event)");
 
-        figure.appendChild(media);
-
         figureCaption.appendChild(imageTitle);
         figureCaption.appendChild(like);
 
+        figure.appendChild(media);
         figure.appendChild(figureCaption);
 
         return (figure);

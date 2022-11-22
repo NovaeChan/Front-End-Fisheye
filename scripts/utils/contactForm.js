@@ -4,7 +4,7 @@ const modal = document.querySelector('.modal');
 const closeButton = modal.querySelector('img');
 const form = document.querySelector('form');
 const mainWrapper = document.querySelector('main');
-
+const body = document.querySelector('body');
 let contactModalOpened = false;
 
 button.addEventListener('click', () => {
@@ -28,12 +28,13 @@ document.addEventListener('keydown', (event) => {
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     console.log(getFormInput());
+    closeModal();
 })
 
 function openModal(){
     contactModal.style.display = "block";
     mainWrapper.setAttribute('aria-hidden', 'true');
-    mainWrapper.className = 'no-scroll';
+    body.className = 'no-scroll';
     contactModal.setAttribute('aria-hidden', 'false');
     closeButton.focus();
     contactModalOpened = true;
@@ -43,7 +44,7 @@ function closeModal() {
     contactModal.style.display = "none";
     mainWrapper.style.filter = 'none';
     mainWrapper.setAttribute('aria-hidden', 'false');
-    mainWrapper.className = 'scroll';
+    body.className = 'scroll';
     contactModal.setAttribute('aria-hidden', 'true');
     contactModalOpened = false;
     button.focus();

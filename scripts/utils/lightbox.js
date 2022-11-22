@@ -62,6 +62,8 @@ function openLightbox(event){
 }
 
 function closeLightbox(){
+    const imgFigure = lightbox.querySelector('.thumbnail');
+    const imgMain = mainPhotographer.querySelector(`[data-index="${imgFigure.dataset.index}"]`);
     document.getElementById("lightbox_modal").style.display = "none";
     lightbox.style.display = "none";
     mainPhotographer.setAttribute('aria-hidden', 'false');
@@ -70,6 +72,7 @@ function closeLightbox(){
     header.style.display = 'flex';
     lightbox.setAttribute('aria-hidden', 'true');
     lightboxOpened = false;
+    imgMain.focus();
     removeLightbox();
 }
 
@@ -77,11 +80,12 @@ function showLightbox(target){
     const figureCaption = target.parentNode;
     const description = figureCaption.querySelector(".figure-description");
     const lightboxThumbnail = document.querySelector(".lightbox-thumbnail");
-
+    
     lightboxThumbnail.appendChild(target.cloneNode());
     lightboxThumbnail.appendChild(description.cloneNode(true));
-
+    
     const thumbnail = lightboxThumbnail.querySelector('.thumbnail');
+
     thumbnail.removeAttribute("onclick");
     if(thumbnail.tagName.toLocaleLowerCase() === "video"){
         thumbnail.setAttribute("controls", "");
