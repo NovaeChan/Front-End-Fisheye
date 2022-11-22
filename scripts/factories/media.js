@@ -25,8 +25,9 @@ function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
         imageTitle.ariaLabel = `${title}`;
         imageTitle.className = 'figure-description';
 
-        like.innerHTML = `${likes} <i class="fa-solid fa-heart" aria-label=${likes}></i>`;
+        like.innerHTML = `<span class="numberLikes">${likes}</span> <i class="fa-solid fa-heart" aria-label=${likes}></i>`;
         like.className = 'likes ';
+        like.setAttribute("onclick", "addLike(event)");
 
         figure.appendChild(media);
 

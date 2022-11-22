@@ -66,6 +66,15 @@ function displayPhothographerMedias(medias, photograph) {
     }
 }
 
+async function init() {
+    // Récupère les datas des photographes
+    const { photographers, media } = await getInfos();
+    let photograph = photographers.find(photographer => photographer.id == photographerId);
+    let medias = media.filter(media => media.photographerId == photographerId);
+    displayPhotographerInfos(photograph, medias);
+    displayPhothographerMedias(medias, photograph);
+}
+
 function getLikes(medias) {
     let likes = 0;
     medias.forEach(media => {
@@ -74,24 +83,29 @@ function getLikes(medias) {
     return likes;
 }
 
-// function displayLightbox(event){
-//     console.log(event.target);
-// }
-
-async function init() {
-    // Récupère les datas des photographes
-    const { photographers, media } = await getInfos();
-    let photograph = photographers.find(photographer => photographer.id == photographerId);
-    let medias = media.filter(media => media.photographerId == photographerId);
-    displayPhotographerInfos(photograph, medias);
-    displayPhothographerMedias(medias, photograph);
-    // const thumbnails = document.querySelectorAll('.thumbnail');
-    // thumbnails.forEach(thumbnail =>{
-    //     thumbnail.addEventListener("click", displayLightbox, false);
-    // })
-
+function addLike(event){
+    let likes = event.target;
+    const parent = likes.parentNode;
+    if(likes.className != "numberLikes"){
+        likes = parent.querySelector('.numberLikes');
+    }
+    if( !likes.hasAttribute('liked') ){
+        likes.setAttribute('liked', '');
+        const likeImg = parent.querySelector('i');
+        likeImg.style.color = '#525252';
+        let numberOfLikes = likes.innerHTML;
+        numberOfLikes = parseInt(numberOfLikes);
+        numberOfLikes ++;
+        likes.innerHTML = `${numberOfLikes}`;
+        updateTotalLikes();
+    }
 }
 
+function updateTotalLikes(){
+    const articleTotalLikes = document.querySelector('.likesAndPrice-article');
+    let totalLikes = articleTotalLikes.querySelector('.totalLikes');
+    totalLikes.innerHTML = parseInt(totalLikes.innerHTML) + 1;
+}
 
 
 init();

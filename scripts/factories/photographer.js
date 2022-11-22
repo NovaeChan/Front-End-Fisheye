@@ -98,8 +98,8 @@ function photographerFactory(data) {
         const PricesLikes = document.createElement( 'article' );
         PricesLikes.className = 'likesAndPrice-article';
 
-        const likesP = document.createElement( 'p' ); 
-        likesP.innerHTML = `${likes} <i class="fa-solid fa-heart" aria-label='nombre de likes : ${likes}'></i>`;
+        const likesP = document.createElement( 'div' ); 
+        likesP.innerHTML = `<span class="totalLikes">${likes}</span> <i class="fa-solid fa-heart" aria-label='nombre de likes : ${likes}'></i>`;
         likes.ariaLabel = ``;
 
         const priceP = document.createElement( 'p' );

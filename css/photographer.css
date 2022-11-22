@@ -89,6 +89,7 @@
 
 .photograph-media .likes {
     color: #901C1C;
+    cursor: pointer;
 }
 .photograph-media .fa-heart{
     color: #901C1C;
