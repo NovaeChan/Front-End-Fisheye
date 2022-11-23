@@ -24,10 +24,10 @@
       <div class="wrapper-dropdown">
         <button onclick="openDropdown(event)" role="listbox" tabindex="0">Popularité</button>
         <i onclick="openDropdown(event)" class="fa-sharp fa-solid fa-chevron-down"></i>
-        <ul class="dropdown">
-          <li onclick="dropdownMenu(event)" class="dropdown-hide">Popularité</li>
-          <li onclick="dropdownMenu(event)">Date</li>
-          <li onclick="dropdownMenu(event)">Titre</li>
+        <ul class="dropdown" role="listbox">
+          <li onclick="dropdownMenu(event)" role="option" class="dropdown-hide" aria-selected="true" tabindex="0">Popularité</li>
+          <li onclick="dropdownMenu(event)" role="option" aria-selected="true" tabindex="0">Date</li>
+          <li onclick="dropdownMenu(event)" role="option" aria-selected="true" tabindex="0">Titre</li>
         </ul>
       </div>
     </div>

@@ -17,6 +17,7 @@ function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
         media.dataset.index = dataSetIndex;
         media.setAttribute('loading', 'lazy');
         media.tabIndex = "0";
+        media.dataset.date = date;
         //Ajouter un écouteur pour le keypress pour ouvrir la lightbox
 
 

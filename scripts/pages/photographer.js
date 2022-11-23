@@ -75,6 +75,7 @@ async function init() {
     let medias = media.filter(media => media.photographerId == photographerId);
     displayPhotographerInfos(photograph, medias);
     displayPhothographerMedias(medias, photograph);
+    orderMedias("");
 }
 
 function getLikes(medias) {
@@ -145,9 +146,50 @@ function dropdownMenu(event){
 }
 
 function orderMedias(orderOption){
-    console.log(`On veut trier par : ${orderOption}`);
-    //Switch case avec les 3 types d'options => A l'intérieur des switchs on appele la méthode sort où l'on tri tous les figures
-    // On ajoute toutes les figures dans le block photograph-media
+    if(orderOption.length < 1){
+        orderOption = "popularité";
+    }
+    let figures = document.querySelectorAll('figure');
+    //On convertit l'objet figures en tableau
+    figures = Array.from(figures);
+
+    const mediasBlock = document.querySelector('.photograph-media');
+    let firstItem ="";
+    let secondItem ="";
+
+    switch(orderOption.toLowerCase()){
+        case "popularité":
+            figures.sort(function(item, nextItem){
+                firstItem = parseInt(item.querySelector('.numberLikes').textContent);
+                secondItem = parseInt(nextItem.querySelector('.numberLikes').textContent);
+                return secondItem - firstItem;
+            })
+            console.log("on tri par popularité");
+            break;
+        case "date":
+            figures.sort(function(item, nextItem){
+                firstItem = Date.parse(item.querySelector('[data-date]').dataset.date);
+                secondItem = Date.parse(nextItem.querySelector('[data-date]').dataset.date);
+                return firstItem - secondItem;
+            })
+            console.log("on tri par date");
+            break;
+        case "titre":
+            figures.sort(function(item, nextItem){
+                firstItem = item.querySelector('.figure-description').textContent;
+                secondItem = nextItem.querySelector('.figure-description').textContent;
+                return firstItem.localeCompare(secondItem);
+            })
+            break;
+        default:
+            console.log("On tri par défaut par titre");
+            break;
+    }
+    console.log("tri terminé");
+    console.log(figures);
+
+    mediasBlock.innerHTML = "";
+    figures.forEach(elt => mediasBlock.appendChild(elt));
 }
 
 

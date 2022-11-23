@@ -1,3 +1,4 @@
+//TODO : AJOUTER LES TABINDEX + ROLE + ARIA : VOIR LA MAQUETTE FIGMA
 const nextButton = document.querySelector('[aria-label="Next image"]');
 const previousButton = document.querySelector('[aria-label="Previous image"]');
 const lightbox = document.getElementById('lightbox_modal');
