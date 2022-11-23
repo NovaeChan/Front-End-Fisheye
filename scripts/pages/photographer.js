@@ -1,3 +1,4 @@
+//TODO : AJOUTER EVENTLISTENER POUR LE DROPDOWN QUAND ENTREE EST APPUYE
 const url = new URL(window.location.href);
 const search_params = url.searchParams;
 const main = document.querySelector('main');

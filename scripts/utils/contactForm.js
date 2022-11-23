@@ -1,3 +1,4 @@
+//TODO : AJOUTER LES TABINDEX + ROLE + ARIA : VOIR LA MAQUETTE FIGMA
 const button = document.querySelector(".contact_button");
 const contactModal = document.getElementById("contact_modal");
 const modal = document.querySelector('.modal');
