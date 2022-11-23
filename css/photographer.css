@@ -319,28 +319,41 @@ form textarea {
 
 .wrapper-dropdown{
     position: relative;
-    color: #FFFFFF;
-    background-color: #901C1C;
-    border-radius: 5px;
-    padding: 5px;
-    cursor: pointer;
-    width: 170px;
-    height: 69px;
-    font-size: 18px;
-    font-weight: 400;
-    display: flex;
-    justify-items: center;
+    display: inline-block;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    font-weight: 400;
+    height: 69px;
+    width: 170px;
+    background: #911C1C;
+    border-radius: 5px;
+    text-align: start;
+    font-size: 18px;
+    line-height: 23px;
+    color: #FFFFFF;
+    appearance: none;
+    cursor: pointer;
 }
 
 .wrapper-dropdown button{
-    color: #FFFFFF;
-    font-size: 18px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
     border: none;
-    background-color: #901C1C;
+    background: none;
+    color:#FFFFFF;
+    font-size: 18px;
+    text-align: left;
+    padding: 20px;
     cursor: pointer;
+}
+
+.wrapper-dropdown .fa-chevron-down{
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-50%, -50%);
 }
 
 .wrapper-dropdown .dropdown {

@@ -118,6 +118,7 @@ function isEnterPressed(event){
 function openDropdown(event){
     const parent = event.target.parentNode;
     parent.classList.toggle('wrapper-dropdown-open');
+    parent.setAttribute('aria-expanded', 'true');
     event.target.focus();
 }
 
@@ -126,15 +127,25 @@ function dropdownMenu(event){
     const ulDropdown = event.target.parentNode;
     const fullDropdown = ulDropdown.parentNode;
     const button =  fullDropdown.querySelector('button');
-    
-    
-    // Récupérer la cible de l'event => stocker la valeur => faire disparaître la li de la cible => la faire apparaître dans le bouton
-    // Avec la valeur stockée appeler une fonction de tri
-    // Ne pas oublier de refermer le dropdown + focus 
-    // 
+    const hiddenOption = ulDropdown.querySelector('.dropdown-hide');
+
+    hiddenOption.classList.remove('dropdown-hide');
+    hiddenOption.setAttribute('aria-selected', 'false');
+
+    //On cache l'option sélectionnée
+    event.target.classList.add('dropdown-hide');
+    event.target.setAttribute('aria-selected', 'true');
+
+    //On change l'affichage du bouton pour que la bonne valeur soit affichée 
+    button.textContent = orderOption;
+
+    fullDropdown.classList.toggle('wrapper-dropdown-open');
+    fullDropdown.setAttribute('aria-expanded', 'false');
+    orderMedias(orderOption);
 }
 
 function orderMedias(orderOption){
+    console.log(`On veut trier par : ${orderOption}`);
     //Switch case avec les 3 types d'options => A l'intérieur des switchs on appele la méthode sort où l'on tri tous les figures
     // On ajoute toutes les figures dans le block photograph-media
 }
