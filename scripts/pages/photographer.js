@@ -1,4 +1,3 @@
-//TODO : AJOUTER EVENTLISTENER POUR LE DROPDOWN QUAND ENTREE EST APPUYE
 const url = new URL(window.location.href);
 const search_params = url.searchParams;
 const main = document.querySelector('main');
@@ -130,7 +129,7 @@ function dropdownMenu(event){
     const fullDropdown = ulDropdown.parentNode;
     const button =  fullDropdown.querySelector('button');
     const hiddenOption = ulDropdown.querySelector('.dropdown-hide');
-
+    
     hiddenOption.classList.remove('dropdown-hide');
     hiddenOption.setAttribute('aria-selected', 'false');
 
@@ -143,6 +142,8 @@ function dropdownMenu(event){
 
     fullDropdown.classList.toggle('wrapper-dropdown-open');
     fullDropdown.setAttribute('aria-expanded', 'false');
+
+    button.focus();
     orderMedias(orderOption);
 }
 
@@ -165,7 +166,6 @@ function orderMedias(orderOption){
                 secondItem = parseInt(nextItem.querySelector('.numberLikes').textContent);
                 return secondItem - firstItem;
             })
-            console.log("on tri par popularité");
             break;
         case "date":
             figures.sort(function(item, nextItem){
@@ -173,7 +173,6 @@ function orderMedias(orderOption){
                 secondItem = Date.parse(nextItem.querySelector('[data-date]').dataset.date);
                 return firstItem - secondItem;
             })
-            console.log("on tri par date");
             break;
         case "titre":
             figures.sort(function(item, nextItem){
@@ -183,15 +182,16 @@ function orderMedias(orderOption){
             })
             break;
         default:
-            console.log("On tri par défaut par titre");
             break;
     }
-    console.log("tri terminé");
-    console.log(figures);
-
     mediasBlock.innerHTML = "";
     figures.forEach(elt => mediasBlock.appendChild(elt));
 }
 
+function openDropdownOnEnter(event){
+    if(event.key == "Enter"){
+        dropdownMenu(event);
+    }
+}
 
 init();

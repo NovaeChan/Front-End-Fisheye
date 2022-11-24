@@ -15,7 +15,7 @@ previousButton.addEventListener("click", (event) => {
     newFigure(event.target);
 });
 
-closeButtonLightbox.addEventListener("keydown", (event) => {
+closeButtonLightbox.addEventListener("keypress", (event) => {
     if(lightboxOpened == true){
         switch(event.key){
             case "Enter":
@@ -50,16 +50,18 @@ document.addEventListener("keydown", (event) => {
 // eslint-disable-next-line no-unused-vars
 function openLightbox(event){
     lightbox.style.display = "block";
-    mainPhotographer.setAttribute('aria-hidden', 'true');
-    mainPhotographer.className = 'no-scroll';
-    header.className = 'no-scroll';
     header.style.display ='none';
     mainPhotographer.style.display = 'none';
+
+    mainPhotographer.className = 'no-scroll';
+
+    mainPhotographer.setAttribute('aria-hidden', 'true');
     header.setAttribute('aria-hidden', 'true');
     lightbox.setAttribute('aria-hidden', 'false');
+
     showLightbox(event.target);
     lightboxOpened = true;
-    closeButtonLightbox.focus();
+    lightbox.focus();
 }
 
 function closeLightbox(){
@@ -67,10 +69,12 @@ function closeLightbox(){
     const imgMain = mainPhotographer.querySelector(`[data-index="${imgFigure.dataset.index}"]`);
     document.getElementById("lightbox_modal").style.display = "none";
     lightbox.style.display = "none";
-    mainPhotographer.setAttribute('aria-hidden', 'false');
-    mainPhotographer.className = 'scroll';
     mainPhotographer.style.display = 'block';
     header.style.display = 'flex';
+
+    mainPhotographer.className = 'scroll';
+
+    mainPhotographer.setAttribute('aria-hidden', 'false');
     lightbox.setAttribute('aria-hidden', 'true');
     lightboxOpened = false;
     imgMain.focus();
@@ -81,11 +85,16 @@ function showLightbox(target){
     const figureCaption = target.parentNode;
     const description = figureCaption.querySelector(".figure-description");
     const lightboxThumbnail = document.querySelector(".lightbox-thumbnail");
-    
+
     lightboxThumbnail.appendChild(target.cloneNode());
     lightboxThumbnail.appendChild(description.cloneNode(true));
     
     const thumbnail = lightboxThumbnail.querySelector('.thumbnail');
+    const desc = lightboxThumbnail.querySelector('p');
+    lightbox.tabIndex = "0";
+    thumbnail.tabIndex = "0";
+    desc.tabIndex = "0";
+    lightboxThumbnail.focus();
 
     thumbnail.removeAttribute("onclick");
     if(thumbnail.tagName.toLocaleLowerCase() === "video"){

@@ -362,11 +362,10 @@ form textarea {
     left: 0;
     width: 100%;
     background: #901C1C;
-    opacity: 0;
+    display: none;
     border-radius: 0 0 5px 5px;
     list-style-type: none;
     padding-left: 10px;
-    
 }
 
 .wrapper-dropdown li{
@@ -387,5 +386,5 @@ form textarea {
 }
 
 .wrapper-dropdown-open .dropdown{
-    opacity: 1;
+    display: block;
 }
