@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
     const { date, id, image, likes, price, title, video } = data;
     const pathMedia = `assets/images/${figureCaptiongrapher.name}/`;

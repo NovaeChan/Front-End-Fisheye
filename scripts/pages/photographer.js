@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 const url = new URL(window.location.href);
 const search_params = url.searchParams;
 const main = document.querySelector('main');
@@ -31,7 +33,6 @@ async function displayPhotographerInfos(photographer, medias) {
 
     try {
         //Description photographer
-        // eslint-disable-next-line no-undef
         const photographerModel = photographerFactory(photographer);
         const photographDesc = photographerModel.getUserDescription();
         const photographImg = photographerModel.getUserPortrait();
@@ -48,7 +49,6 @@ async function displayPhotographerInfos(photographer, medias) {
 }
 
 function displayPhothographerMedias(medias, photograph) {
-    // const mediaHeader = document.createElement('section');
     const mediasBlock = document.createElement('section');
 
     mediasBlock.className = 'photograph-media';
