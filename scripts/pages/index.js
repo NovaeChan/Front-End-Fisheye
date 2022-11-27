@@ -6,6 +6,7 @@
             const onlyPhotographers = photographers.photographers;
             return onlyPhotographers;
         } catch (error) {
+            //Afficher une erreur sur la page en cas d'une erreur
             console.error(`An error occured : ${error}`);
             const errorElement = document.createElement('h2');
             errorElement.classList.add('photographers_error');
@@ -14,7 +15,6 @@
             const main = document.querySelector('main');
             main.appendChild(errorElement);
             return { photographers: [] };
-            //Afficher une erreur sur la page en cas d'une erreur
         }
     }
 

@@ -29,12 +29,15 @@ closeButtonLightbox.addEventListener("keypress", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
+    console.log(lightboxOpened);
     if(lightboxOpened == true){
         switch(event.key){
             case "ArrowLeft":
+                console.log('flèche gauche');
                 newFigure(previousButton);
                 break;
             case "ArrowRight":
+                console.log('flèche droite');
                 newFigure(nextButton);
                 break;
             case "Escape":
@@ -85,7 +88,10 @@ function showLightbox(target){
     const figureCaption = target.parentNode;
     const description = figureCaption.querySelector(".figure-description");
     const lightboxThumbnail = document.querySelector(".lightbox-thumbnail");
+    let figures = document.querySelectorAll('figure');
+    figures = Array.from(figures);
 
+    const indexTarget = figures.indexOf(figureCaption);
     lightboxThumbnail.appendChild(target.cloneNode());
     lightboxThumbnail.appendChild(description.cloneNode(true));
     
@@ -94,6 +100,9 @@ function showLightbox(target){
     lightbox.tabIndex = "0";
     thumbnail.tabIndex = "0";
     desc.tabIndex = "0";
+
+    lightbox.dataset.index = indexTarget;
+
     lightboxThumbnail.focus();
 
     thumbnail.removeAttribute("onclick");
@@ -111,9 +120,7 @@ function removeLightbox(){
 }
 
 function newFigure(event){
-    const lightbox = document.querySelector('.lightbox');
-    const image = lightbox.querySelector('.thumbnail');
-    let dataIndex = image.dataset.index;
+    let dataIndex = lightbox.dataset.index;
     const figures = document.querySelectorAll('figure');
     switch(event.ariaLabel){
         case "Previous image":
@@ -128,6 +135,7 @@ function newFigure(event){
                 dataIndex = 0;
             }
     }
+    lightbox.dataset.index = dataIndex;
     let nextMedia = figures[dataIndex].querySelector('img');
     if(nextMedia == undefined){
         nextMedia = figures[dataIndex].querySelector('video');

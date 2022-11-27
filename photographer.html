@@ -22,12 +22,12 @@
     <div class="filter">
       <span class="filter-title">Trier par</span>
       <div class="wrapper-dropdown">
-        <button onclick="openDropdown(event)" role="listbox" tabindex="0">Popularité</button>
+        <button onclick="openDropdown(event)" role="listbox" tabindex="0" aria-label="Filter by popularity">Popularité</button>
         <i onclick="openDropdown(event)" class="fa-sharp fa-solid fa-chevron-down"></i>
         <ul class="dropdown" role="listbox">
-          <li onclick="dropdownMenu(event)" onkeypress="openDropdownOnEnter(event)" role="option" class="dropdown-hide" aria-selected="true" tabindex="0">Popularité</li>
-          <li onclick="dropdownMenu(event)" onkeypress="openDropdownOnEnter(event)" role="option" aria-selected="true" tabindex="0">Date</li>
-          <li onclick="dropdownMenu(event)" onkeypress="openDropdownOnEnter(event)" role="option" aria-selected="true" tabindex="0">Titre</li>
+          <li onclick="dropdownMenu(event)" onkeypress="openDropdownOnEnter(event)" role="option" class="dropdown-hide" aria-label="Filter by popularity" aria-selected="true" tabindex="0">Popularité</li>
+          <li onclick="dropdownMenu(event)" onkeypress="openDropdownOnEnter(event)" role="option" aria-selected="true" aria-label="Filter by date" tabindex="0">Date</li>
+          <li onclick="dropdownMenu(event)" onkeypress="openDropdownOnEnter(event)" role="option" aria-selected="true" aria-label="Filter by title" tabindex="0">Titre</li>
         </ul>
       </div>
     </div>

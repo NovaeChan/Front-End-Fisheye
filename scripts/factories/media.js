@@ -11,6 +11,7 @@ function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
 
         media.setAttribute("src", pathMedia + (image ? image : video));
         media.alt = `${title}`;
+        media.ariaLabel = `${title}`;
         media.className = "thumbnail";
         media.setAttribute("onclick", "openLightbox(event)");
         media.setAttribute("onkeypress", "isEnterPressed(event)");
@@ -18,8 +19,6 @@ function mediaFactory(data, figureCaptiongrapher, dataSetIndex) {
         media.setAttribute('loading', 'lazy');
         media.tabIndex = "0";
         media.dataset.date = date;
-        //Ajouter un écouteur pour le keypress pour ouvrir la lightbox
-
 
         figureCaption.className = "image-info";
         figureCaption.alt = `${title}`;

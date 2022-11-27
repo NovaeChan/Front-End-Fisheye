@@ -116,6 +116,7 @@ function isEnterPressed(event){
     }
 }
 
+//Ouvre le dropdown
 function openDropdown(event){
     const parent = event.target.parentNode;
     parent.classList.toggle('wrapper-dropdown-open');
@@ -123,6 +124,7 @@ function openDropdown(event){
     event.target.focus();
 }
 
+//Permet de sélectionner un filtre et de fermer le menu dropdown
 function dropdownMenu(event){
     const orderOption = event.target.textContent;
     const ulDropdown = event.target.parentNode;
@@ -139,6 +141,7 @@ function dropdownMenu(event){
 
     //On change l'affichage du bouton pour que la bonne valeur soit affichée 
     button.textContent = orderOption;
+    button.ariaLabel = `Filter by ${orderOption}`;
 
     fullDropdown.classList.toggle('wrapper-dropdown-open');
     fullDropdown.setAttribute('aria-expanded', 'false');
@@ -147,6 +150,7 @@ function dropdownMenu(event){
     orderMedias(orderOption);
 }
 
+//Faire le tri des medias en fonction de l'option choisie
 function orderMedias(orderOption){
     if(orderOption.length < 1){
         orderOption = "popularité";
