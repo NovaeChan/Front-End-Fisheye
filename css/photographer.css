@@ -132,10 +132,17 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: #901c1c;
     border-radius: 5px;
     cursor: pointer;
 }
+
+.photograph-header .contact_button:hover{
+    background-color: #db8876;
+    color: black;
+}
+
+/* Modal de contact */
 
 .contact_modal{
     position: fixed;
@@ -227,6 +234,8 @@ form textarea {
 .scroll {
     overflow: auto;
 }
+
+/* Lightbox */
 
 .lightbox_modal{
     position: fixed;

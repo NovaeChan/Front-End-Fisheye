@@ -1,9 +1,9 @@
+/* eslint-disable no-undef */
 //TODO : AJOUTER LES TABINDEX + ROLE + ARIA : VOIR LA MAQUETTE FIGMA
 const nextButton = document.querySelector('[aria-label="Next image"]');
 const previousButton = document.querySelector('[aria-label="Previous image"]');
 const lightbox = document.getElementById('lightbox_modal');
 const closeButtonLightbox = document.getElementById('close_button');
-const header = document.querySelector('header');
 const mainPhotographer = document.querySelector('main');
 let lightboxOpened = false;
 
@@ -29,19 +29,15 @@ closeButtonLightbox.addEventListener("keypress", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-    console.log(lightboxOpened);
     if(lightboxOpened == true){
         switch(event.key){
             case "ArrowLeft":
-                console.log('flèche gauche');
                 newFigure(previousButton);
                 break;
             case "ArrowRight":
-                console.log('flèche droite');
                 newFigure(nextButton);
                 break;
             case "Escape":
-                console.log('oui');
                 closeLightbox();
                 break;
             default:
