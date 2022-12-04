@@ -3,8 +3,8 @@
 
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/photographer.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 
 <body>
   <header>
-    <a href="index.html" tabindex="0"><img src="assets/images/logo.png" class="logo" alt="Fisheye homepage" /></a>
+    <a href="index.html" tabindex="0"><img src="assets/images/logo.png" class="logo" alt="Fisheye homepage"></a>
   </header>
   <main id="main" aria-hidden="false">
     <div class="photograph-header">
@@ -22,7 +22,7 @@
     <div class="filter">
       <span class="filter-title">Trier par</span>
       <div class="wrapper-dropdown">
-        <button onclick="openDropdown(event)" role="listbox" tabindex="0" aria-label="Filter by popularity">Popularité</button>
+        <button onclick="openDropdown(event)" tabindex="0" aria-label="Filter by popularity">Popularité</button>
         <i onclick="openDropdown(event)" class="fa-sharp fa-solid fa-chevron-down"></i>
         <ul class="dropdown" role="listbox">
           <li onclick="dropdownMenu(event)" onkeypress="openDropdownOnEnter(event)" role="option" class="dropdown-hide" aria-label="Filter by popularity" aria-selected="true" tabindex="0">Popularité</li>
@@ -32,25 +32,25 @@
       </div>
     </div>
   </main>
-  <div class="contact_modal" id="contact_modal" role="form" aria-hidden="true" aria-describedby="modalContact">
+  <div class="contact_modal" id="contact_modal" role="form" aria-hidden="true" aria-labelledby="contact-me">
     <div class="modal">
       <header>
         <h2 id="contact-me">Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close contact form" role="button" tabindex="0" />
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close contact form" role="button" tabindex="0">
       </header>
       <form>
         <div>
           <label for="firstName" id="firstNameLabel">Prénom</label>
-          <input type="text" name="firstName" id="firstName" role="textbox" aria-label="First name"
-            aria-labelledby="firstNameLabel" required />
+          <input type="text" name="firstName" id="firstName" aria-label="First name"
+            aria-labelledby="firstNameLabel" required >
           <label for="lastName" id="lastNameLabel">Nom</label>
-          <input type="text" name="lastName" id="lastName" role="textbox" aria-label="Last name"
-            aria-labelledby="lastNameLabel" required />
+          <input type="text" name="lastName" id="lastName" aria-label="Last name"
+            aria-labelledby="lastNameLabel" required >
           <label for="email" id="emailLabel">Email</label>
-          <input type="email" name="email" id="email" role="textbox" aria-label="email" aria-labelledby="emailLabel"
-            required />
+          <input type="email" name="email" id="email" aria-label="email" aria-labelledby="emailLabel"
+            required >
           <label for="yourMessage" id="yourMessageLabel">Votre message</label>
-          <textarea name="yourMessage" id="yourMessage" rows="8" role="textbox" aria-label="Your message"
+          <textarea name="yourMessage" id="yourMessage" rows="8" aria-label="Your message"
             aria-labelledby="yourMessageLabel" required></textarea>
         </div>
         <button class="contact_button" id="submit_button">Envoyer</button>
@@ -66,7 +66,7 @@
       <div class="lightbox-thumbnail">
       </div>
       <img src="assets/icons/close.svg" onclick="closeLightbox()" alt="Close dialog" role="button" tabindex="0"
-        class="close_button" id="close_button" />
+        class="close_button" id="close_button" >
     </div>
   </div>
   <script src="scripts/factories/photographer.js"></script>

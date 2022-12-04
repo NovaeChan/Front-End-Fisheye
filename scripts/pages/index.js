@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
     async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
         try {
             const response = await fetch('./data/photographers.json');
             const photographers = await response.json();
